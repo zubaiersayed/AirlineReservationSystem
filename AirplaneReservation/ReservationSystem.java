@@ -1,19 +1,18 @@
 package AirplaneReservation;
 
-import java.util.Date;
-
 public class ReservationSystem {
     public static void main(String[] args) {
-        System.out.println("hei");
 
-        Customer cs = new Customer("Zubaier", new Date(), 200);
-        System.out.println(cs.getID());
-        System.out.println(cs.getID());
-        System.out.println(cs.getID());
+        Flight oslo = new Flight("Oslo");
+        Flight bergen = new Flight("bergen");
+        Flight Stavanger = new Flight("Stavanger");
+        Flight Trysil = new Flight("Trysil");
+        Flight Drammen = new Flight("Drammen");
+        Flight Trondheim = new Flight("Trondheim");
 
-        Customer ps = new Customer("Peivaston", new Date(), 300);
-
-        System.out.println(ps.getID());
+        System.out.println(bergen);
+        System.out.println(oslo);
+        System.out.println(Trondheim);
 
 
     }

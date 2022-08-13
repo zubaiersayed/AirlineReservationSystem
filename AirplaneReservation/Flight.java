@@ -1,35 +1,62 @@
 package AirplaneReservation;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Flight {
-    private String flightID;
-    private double clock;
+    private int ID = 0;
+    private static int nextID = 0;
     private String destination;
-    private Seat seatNumber;
+    private double clock;
+    private Map<Flight, Seat> flightSeats;
 
     public Flight(String destination){
-        this.flightID = "";
-        this.clock = new Random().nextDouble();
+        this.ID = this.nextID;
+        nextID++;
+        this.clock = new Random().nextDouble(24);
         this.destination = destination;
-        this.seatNumber = null;
+        this.flightSeats = new HashMap<>();
     }
 
-    public void setFlightID(String flightID) {
-        this.flightID = flightID;
+    public int getID() {
+        return ID;
     }
 
-    public void setClock(double clock) {
-        this.clock = clock;
+    public double getClock() {
+        return clock;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setSeatNumber(Seat seatNumber) {
-        this.seatNumber = seatNumber;
+    public Map<Flight, Seat> getFlightSeats() {
+        return flightSeats;
     }
 
+    public void showAvailableSeats(Flight flight){
+        for(Seat available : this.flightSeats.values()){
+            this.flightSeats.values().forEach(seat -> System.out.println(available));
+        }
+    }
+
+    public void bookSeat(Seat seat){
+        if (!this.flightSeats.containsValue(seat)) {
+            System.out.println("Seat has been booked.");
+        } else {
+            System.out.println("Seat number " + seat + " is booked.");
+            this.flightSeats.remove(this, seat);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Flight information: \nDestination: "
+                + getDestination() + "\nFlightID: "
+                + getID() + "\nTime: "
+                + getClock();
+
+    }
 }
 
